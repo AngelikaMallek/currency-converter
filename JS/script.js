@@ -1,26 +1,35 @@
 {
-    const form = document.querySelector(".js-form");
-    form.addEventListener("submit", (event) => {
+    const calculateResult = (formCurrencyValue, amount) => {
+        switch (formCurrencyValue) {
+            case "EUR":
+                return amount / 4.69;
+            case "USD":
+                return amount / 4.30;
+            case "GBP":
+                return amount / 5.25;
+        }
+    }
+
+    const updateResult = (result, formCurrencyValue) => {
+        const resultText = document.querySelector(".js-result");
+        resultText.innerText = `Otrzymasz: ${(result.toFixed(2))} ${formCurrencyValue}`;
+    }
+
+    const onFormSubmit = (event) => {
         event.preventDefault();
         const formCurrency = document.querySelector(".js-currency");
         const formQuantity = document.querySelector(".js-quantity");
-        const result = document.querySelector(".js-result");
-
         const formCurrencyValue = formCurrency.value;
-        const amount = +formQuantity.value;
-        let rate;
+        const amount = +formQuantity.value; 
+        const result = calculateResult(formCurrencyValue, amount);
+        updateResult(result, formCurrencyValue);
 
-        switch (formCurrencyValue) {
-            case "EUR":
-                rate = 4.69;
-                break;
-            case "USD":
-                rate = 4.30;
-                break;
-            case "GBP":
-                rate = 5.25;
-                break;
-        }
-        result.innerText = `Otrzymasz: ${(amount / rate).toFixed(2)} ${formCurrency.value}`;
-    })
+
+    }
+    const init = () => {
+        const form = document.querySelector(".js-form");
+        form.addEventListener("submit", onFormSubmit);
+    }
+
+    init();
 }
