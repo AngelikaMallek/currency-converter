@@ -13,7 +13,7 @@
     color: white;
 }
 
-.form__element {
+.form__field {
     padding: 8px;
     border: solid 1px #bbb;
     border-radius: 5px;
@@ -27,7 +27,7 @@
     background-color: #eee;
 }
 
-.form__spanText {
+.form__text {
     display: inline-block;
     padding: 8px;
     max-width: 300px;
