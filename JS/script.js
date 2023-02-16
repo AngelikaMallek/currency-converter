@@ -7,17 +7,19 @@ form.addEventListener("submit", (event) => {
     event.preventDefault();
 
     let formCurrencyValue = formCurrency.value;
+    let amount = +formQuantity.value;
+    let rate;
 
     switch (formCurrencyValue) {
         case "EUR":
-            formCurrencyValue = 4.69;
+            rate = 4.69;
             break;
         case "USD":
-            formCurrencyValue = 4.30;
+            rate = 4.30;
             break;
         case "GBP":
-            formCurrencyValue = 5.25;
+            rate = 5.25;
             break;
     }
-    result.innerText = `Otrzymasz: ${(+formQuantity.value / formCurrencyValue).toFixed(2)} ${formCurrency.value}`;
+    result.innerText = `Otrzymasz: ${(amount / rate).toFixed(2)} ${formCurrency.value}`;
 })
