@@ -8,3 +8,4 @@ This is a simple currency converter. You can recalculate the value of your money
 - HTML
 - JavaScript
 - CSS
+- BEM
